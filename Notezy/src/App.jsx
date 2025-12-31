@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Navbar from './Components/Navbar'
 import Notes from './Components/Notes'
+import Note from './Components/Note'
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
 
 function App() {
 
@@ -8,7 +10,6 @@ function App() {
     <>
       <div className="main min-h-screen relative flex justify-center">
         <div className="min-h-screen w-[60%] relative opacity-100">
-  {/* Dashed Grid */}
   <div
     className="absolute inset-0 z-0 opacity100"
     style={{
@@ -55,8 +56,12 @@ function App() {
     }}
   />
     <div className="content absolute w-full h-screen">
-       <Navbar/>
-       <Notes/>
+       <BrowserRouter>
+       <Routes>
+        <Route path='/' element={<><Navbar/><Notes/></>}/>
+        <Route path='/note' element={<Note/>}/>
+       </Routes>
+       </BrowserRouter>
     </div>
   </div>
   </div>

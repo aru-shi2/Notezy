@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import Navbar from './Components/Navbar'
+import Notes from './Components/Notes'
 
 function App() {
 
   return (
     <>
-      <div className="main flex justify-center">
+      <div className="main min-h-screen relative flex justify-center">
         <div className="min-h-screen w-[60%] relative opacity-100">
   {/* Dashed Grid */}
   <div
@@ -53,9 +54,9 @@ function App() {
       WebkitMaskComposite: "source-in",
     }}
   />
-    <div className="content absolute w-full">
+    <div className="content absolute w-full h-screen">
        <Navbar/>
-      
+       <Notes/>
     </div>
   </div>
   </div>

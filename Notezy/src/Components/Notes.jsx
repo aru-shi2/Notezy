@@ -1,14 +1,21 @@
 import React from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useState,useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Notes = () => {
 
-  const navigate=useNavigate();
-  const handleAdd=() => {
-    navigate("./note")
-  }
+  const [note, setnote] = useState([])
+  useEffect(() => {
+    const notearr=JSON.parse(localStorage.getItem("notes")) || []
+  setnote(notearr)
+  }, [])
   
 
+  const navigate=useNavigate();
+  const handleAdd=() => {
+    navigate("/note")
+  }
+  
   return (
     <div>
       <div className="note h-screen">
@@ -16,6 +23,19 @@ const Notes = () => {
             <button onClick={handleAdd} className='border-2 size-15 border-black rounded-4xl bg-[#db94d1] flex justify-center items-center'><svg class="w-10 h-10 text-gray-600 dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="20" fill="none" viewBox="0 0 24 24">
   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
 </svg></button>
+        </div>
+
+        <div className="notes h-screen flex align-center">
+          {note.map((notee)=>(
+            <div key={notee.id} className="title absolute top-30 flex flex-col bg-green-600 h-60 w-60 rounded-3xl px-10 pt-5">
+              <div className="title text-2xl ">
+                {notee.title}
+              </div>
+              <div className="content">
+                {notee.content}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

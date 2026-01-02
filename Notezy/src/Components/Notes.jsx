@@ -2,15 +2,8 @@ import React from 'react'
 import { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Notes = () => {
-
-  const [note, setnote] = useState([])
-  useEffect(() => {
-    const notearr=JSON.parse(localStorage.getItem("notes")) || []
-  setnote(notearr)
-  }, [])
-  
-
+const Notes = ({notes}) => {
+  console.log(notes)
   const navigate=useNavigate();
   const handleAdd=() => {
     navigate("/note")
@@ -25,9 +18,9 @@ const Notes = () => {
 </svg></button>
         </div>
 
-        <div className="notes h-screen flex align-center">
-          {note.map((notee)=>(
-            <div key={notee.id} className="title absolute top-30 flex flex-col bg-green-600 h-60 w-60 rounded-3xl px-10 pt-5">
+        <div className="note flex h-screen gap-5">
+          {notes.map((notee)=>(
+            <div key={notee.id} className="title relative mt-4 top-30 flex flex-col bg-green-600 h-60 w-60 rounded-3xl px-10 pt-5">
               <div className="title text-2xl ">
                 {notee.title}
               </div>

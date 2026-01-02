@@ -3,22 +3,22 @@ import { useNavigate } from 'react-router-dom'
 import Notes from './Notes';
 import {v4 as uuidv4} from "uuid";
 
-const Note = () => {
+const Note = ({setnotes}) => {
     const [Title, setTitle] = useState("")
     const [Content, setContent] = useState("")
 
  const navigate=useNavigate();
 
     const handleSave=() => {
-      const notes={
+      if(Title && Content){
+        const note={
         id:uuidv4(),
         title:Title,
         content:Content,
       };
-      const oldnotes=localStorage.getItem("notes") || []
-      const updatednotes=[...oldnotes,notes]
-      localStorage.setItem("notes",JSON.stringify(updatednotes))
-      navigate("/")
+      setnotes(prevnotes=>[...prevnotes,note])
+      }
+      navigate("/");
     }
     
 

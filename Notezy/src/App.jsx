@@ -1,12 +1,21 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from './Components/Navbar'
 import Notes from './Components/Notes'
 import Note from './Components/Note'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 
 function App() {
+  const [notes, setnotes] = useState([])
   
+  useEffect(() => {
+    const storednotes=JSON.parse(localStorage.getItem('notes'))||[]
+    setnotes(storednotes)
+  },[])
 
+  useEffect(()=>{
+    localStorage.setItem('notes',JSON.stringify(notes))
+  },[notes])
+  
   return (
     <>
       <div className="main min-h-screen relative flex justify-center">
@@ -59,8 +68,8 @@ function App() {
     <div className="content absolute w-full h-screen">
        <BrowserRouter>
        <Routes>
-        <Route path='/' element={<><Navbar/><Notes/></>}/>
-        <Route path='/note' element={<Note/>}/>
+        <Route path='/' element={<><Navbar/><Notes notes={notes}/></>}/>
+        <Route path='/note' element={<Note setnotes={setnotes}/>}/>
        </Routes>
        </BrowserRouter>
     </div>

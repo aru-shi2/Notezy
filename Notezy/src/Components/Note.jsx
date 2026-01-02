@@ -26,7 +26,6 @@ const Note = ({setnotes}) => {
     <div className=' h-full'>
 
         <div className="btns flex justify-between">
-            <button className='border-2'>Delete</button>
             <button onClick={handleSave} className='border-2'>Save</button>
         </div>
 
@@ -40,10 +39,6 @@ const Note = ({setnotes}) => {
         <textarea onChange={(e)=>(
             setContent(e.target.value))} value={Content} className='h-full w-full' placeholder='Enter Note...'  name="" id=""></textarea>
       </div>
-
-      <div className="btn absolute bottom-6 right-6 ">
-            <button className='border-2 size-15 border-black rounded-4xl bg-[#db94d1] flex justify-center items-center'>Edit</button>
-        </div>
     </div>
   )
 }

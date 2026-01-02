@@ -68,7 +68,7 @@ function App() {
     <div className="content absolute w-full h-screen">
        <BrowserRouter>
        <Routes>
-        <Route path='/' element={<><Navbar/><Notes notes={notes}/></>}/>
+        <Route path='/' element={<><Navbar/><Notes notes={notes} setnotes={setnotes}/></>}/>
         <Route path='/note' element={<Note setnotes={setnotes}/>}/>
        </Routes>
        </BrowserRouter>

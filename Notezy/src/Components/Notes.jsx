@@ -1,13 +1,18 @@
 import React from 'react'
-import { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Notes = ({notes}) => {
+const Notes = ({notes,setnotes}) => {
   console.log(notes)
   const navigate=useNavigate();
   const handleAdd=() => {
     navigate("/note")
   }
+  
+  const handleDelete=(id) => {
+    console.log(id)
+    setnotes(notes.filter(n=>n.id!=id))
+  }
+  
   
   return (
     <div>
@@ -18,7 +23,7 @@ const Notes = ({notes}) => {
 </svg></button>
         </div>
 
-        <div className="note flex h-screen gap-5">
+        <div className="note flex flex-wrap h-screen gap-5">
           {notes.map((notee)=>(
             <div key={notee.id} className="title relative mt-4 top-30 flex flex-col bg-green-600 h-60 w-60 rounded-3xl px-10 pt-5">
               <div className="title text-2xl ">
@@ -26,6 +31,10 @@ const Notes = ({notes}) => {
               </div>
               <div className="content">
                 {notee.content}
+              </div>
+              <div className="btns absolute space-x-20 bottom-5">
+                <button onClick={()=>handleDelete(notee.id)} className='border-2 '>Delete</button>
+                <button className='border-2 '>Edit</button>
               </div>
             </div>
           ))}

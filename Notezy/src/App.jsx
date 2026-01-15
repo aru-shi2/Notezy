@@ -70,6 +70,7 @@ function App() {
        <Routes>
         <Route path='/' element={<><Navbar/><Notes notes={notes} setnotes={setnotes}/></>}/>
         <Route path='/note' element={<Note setnotes={setnotes}/>}/>
+        <Route path='/note/:id' element={<Note setnotes={setnotes} notes={notes}/>}/>
        </Routes>
        </BrowserRouter>
     </div>

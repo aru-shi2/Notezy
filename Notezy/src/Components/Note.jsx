@@ -1,16 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Notes from './Notes';
 import {v4 as uuidv4} from "uuid";
+import { useParams } from 'react-router-dom';
 
-const Note = ({setnotes}) => {
+const Note = ({setnotes,notes}) => {
+  const {id}=useParams();
     const [Title, setTitle] = useState("")
     const [Content, setContent] = useState("")
+
+useEffect(() => {
+   if(id){
+      const n=notes.find(i=>i.id===id)
+        setTitle(n.title)
+        setContent(n.content)
+   }
+}, [])
+
 
  const navigate=useNavigate();
 
     const handleSave=() => {
-      if(Title && Content){
+      if(!Title && !Content){
+        alert('enter note')
+      }
+      else if(Title && Content && !id){
         const note={
         id:uuidv4(),
         title:Title,
@@ -18,7 +32,16 @@ const Note = ({setnotes}) => {
       };
       setnotes(prevnotes=>[...prevnotes,note])
       }
+      else {
+           setnotes(notes.map((t)=>{
+            if(t.id===id){
+              return {...t,title:Title,content:Content}
+            }
+            return t
+           }))
+          }
       navigate("/");
+
     }
     
 

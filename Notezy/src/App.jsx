@@ -6,6 +6,7 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 
 function App() {
   const [notes, setnotes] = useState([])
+  const [K, setK] = useState("")
   
   useEffect(() => {
     const storednotes=JSON.parse(localStorage.getItem('notes'))||[]
@@ -16,6 +17,13 @@ function App() {
     localStorage.setItem('notes',JSON.stringify(notes))
   },[notes])
   
+  const newn=notes.filter((t)=>{
+    const key=K.toLowerCase();
+    return(
+      t.title.toLowerCase().includes(key)||t.content.toLowerCase().includes(key)
+    )
+  })
+
   return (
     <>
       <div className="main min-h-screen relative flex justify-center">
@@ -68,7 +76,7 @@ function App() {
     <div className="content absolute w-full h-screen">
        <BrowserRouter>
        <Routes>
-        <Route path='/' element={<><Navbar/><Notes notes={notes} setnotes={setnotes}/></>}/>
+        <Route path='/' element={<><Navbar onSearch={setK}/><Notes notes={K?newn:notes} setnotes={setnotes}/></>}/>
         <Route path='/note' element={<Note setnotes={setnotes}/>}/>
         <Route path='/note/:id' element={<Note setnotes={setnotes} notes={notes}/>}/>
        </Routes>

@@ -1,12 +1,16 @@
 import React from 'react'
 import { useState } from 'react'
+import { FaSearch } from "react-icons/fa";
+import { RxCross2 } from "react-icons/rx";
 
 const Navbar = ({onSearch}) => {
 
   const [Key, setKey] = useState("")
+  const [Searching, setSearching] = useState(false)
 
   const Search=() => {
      onSearch(Key)
+     setSearching(true)
   }
   
 
@@ -20,10 +24,11 @@ const Navbar = ({onSearch}) => {
       <div className="search flex gap-5">
         <input onChange={(e)=>(
             setKey(e.target.value))} value={Key} className='bg-white rounded-2xl border-2 border-black h-9 self-center px-5' type="text" placeholder='Search Notes...'/>
-        <button onClick={Search} className='w-9 h-9 rounded-3xl border-2 border-black flex justify-center self-center bg-[#db94d1]'><svg class="self-center w-6 h-6 text-gray-800 dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-  <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
-</svg>
-</button>
+      {Searching?
+      <button onClick={()=>{setKey(""), onSearch(""), setSearching(false)}} className='font-extrabold w-9 h-9 rounded-3xl border-2 border-black flex justify-center items-center self-center bg-[#f70303]'><RxCross2 size={25} /></button>
+      :<button onClick={Search} className='w-9 h-9 rounded-3xl border-2 border-black flex justify-center items-center self-center bg-[#db94d1]'>
+      <FaSearch />
+</button>}
       </div>
           </div>
 

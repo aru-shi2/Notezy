@@ -17,6 +17,10 @@ useEffect(() => {
    }
 }, [])
 
+  function getColors(){
+     return `hsl(${Math.random()*360},20%,60%)`;
+
+  }
 
  const navigate=useNavigate();
 
@@ -24,11 +28,12 @@ useEffect(() => {
       if(!Title && !Content){
         alert('enter note')
       }
-      else if(Title && Content && !id){
+      else if(Title || Content && !id){
         const note={
         id:uuidv4(),
         title:Title,
         content:Content,
+        color:getColors(),
       };
       setnotes(prevnotes=>[...prevnotes,note])
       }

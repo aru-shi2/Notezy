@@ -27,13 +27,13 @@ function App() {
   return (
     <>
       <div className="main min-h-screen relative flex justify-center">
-        <div className="min-h-screen w-[60%] relative opacity-100">
+        <div className="min-h-screen w-[60%] relative opacity-100 bg-[#f5f3ff]">
   <div
     className="absolute inset-0 z-0 opacity100"
     style={{
       backgroundImage: `
-        linear-gradient(to right, #e7e5e4 1px, transparent 1px),
-        linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
+        linear-gradient(to right, #a7562e 1px, transparent 1px),
+        linear-gradient(to bottom, #a7562e 1px, transparent 1px)
       `,
       backgroundSize: "20px 20px",
       backgroundPosition: "0 0, 0 0",
@@ -89,3 +89,4 @@ function App() {
 }
 
 export default App
+

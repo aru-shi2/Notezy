@@ -9,15 +9,16 @@ const Navbar = ({onSearch}) => {
   const [Searching, setSearching] = useState(false)
 
   const Search=() => {
-     onSearch(Key)
-     setSearching(true)
+     if(Key){
+      onSearch(Key)
+      setSearching(true)
+     }
   }
   
 
   return (
     <>
-     <div className='w-full flex justify-between mt-3 px-10 align-center border-2 border-b-black rounded-2xl bg-[#db94d1] absolute h-15'></div>
-    <div className='bg-amber-300 w-full mt-3 flex justify-between px-10 h-13 align-center border-2 border-black rounded-2xl absolute'>
+    <div className='bg-[#cfad77] w-full mt-3 flex justify-between px-10 h-13 align-center shadow-[3px_4px_0px_#a36c14,3px_4px_0px_2px_black] border-2 border-black rounded-2xl absolute'>
       <div className="logo self-center text-2xl font-bold">
         Notezy
       </div>
@@ -26,7 +27,7 @@ const Navbar = ({onSearch}) => {
             setKey(e.target.value))} value={Key} className='bg-white rounded-2xl border-2 border-black h-9 self-center px-5' type="text" placeholder='Search Notes...'/>
       {Searching?
       <button onClick={()=>{setKey(""), onSearch(""), setSearching(false)}} className='font-extrabold w-9 h-9 rounded-3xl border-2 border-black flex justify-center items-center self-center bg-[#f70303]'><RxCross2 size={25} /></button>
-      :<button onClick={Search} className='w-9 h-9 rounded-3xl border-2 border-black flex justify-center items-center self-center bg-[#db94d1]'>
+      :<button onClick={Search} className='w-9 h-9 rounded-3xl border-2 border-black flex justify-center items-center self-center bg-[#eeddb9] hover:bg-[#ca8144] hover:scale-95 hover:transition-transform hover:ease-out'>
       <FaSearch />
 </button>}
       </div>

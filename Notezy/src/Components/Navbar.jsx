@@ -18,8 +18,8 @@ const Navbar = ({onSearch}) => {
 
   return (
     <>
-    <div className='bg-[#cfad77] w-full mt-3 flex justify-between px-10 h-13 align-center shadow-[3px_4px_0px_#a36c14,3px_4px_0px_2px_black] border-2 border-black rounded-2xl absolute'>
-      <div className="logo self-center text-2xl font-bold">
+    <div className='bg-[#cfad77] sm:w-[90%] w-[90%] h-20 mt-3 flex flex-col sm:flex-row sm:justify-between px-10 sm:h-13 align-center shadow-[3px_4px_0px_#a36c14,3px_4px_0px_2px_black] border-2 border-black rounded-2xl absolute z-50'>
+      <div className="logo self-center text-xl sm:text-2xl font-bold">
         Notezy
       </div>
       <div className="search flex gap-5">

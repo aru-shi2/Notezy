@@ -20,11 +20,11 @@ const Notes = ({notes,setnotes}) => {
   return (
     <div>
       <div className="note h-screen">
-        <div className="btn absolute bottom-6 right-6 ">
-            <button onClick={handleAdd} className='border-2 size-15 border-black rounded-4xl flex justify-center items-center bg-[#cfad77] hover:bg-[#ca8144] hover:scale-95 hover:transition-transform hover:ease-out'><IoMdAdd size={40}/></button>
+        <div className="btn absolute bottom-25 right-25 z-50">
+            <button onClick={handleAdd} className='border-2 size-15 border-black rounded-4xl flex justify-center items-center bg-[#cfad77] hover:bg-[#ca8144] hover:scale-95 hover:transition-transform hover:ease-out absolute z-50'><IoMdAdd size={40}/></button>
         </div>
 
-        <div className="note flex flex-wrap h-screen gap-6">
+        <div className="note flex flex-wrap h-screen gap-6 overflow-y-scroll sm:justify-center md:justify-start pr-6 pl-10">
           {notes.map((notee)=>(
             <div style={{backgroundColor:notee.color}} key={notee.id} className="title relative mt-4 top-25 flex flex-col h-70 w-63 rounded-3xl px-5 pt-5 flex-wrap border-2 border-black hover:shadow-[4px_4px_0_0_rgba(0,0,0,0.08)]">
               <div className=" h-[25%] title font-semibold text-2xl whitespace-normal break-all overflow-hidden pb-10">

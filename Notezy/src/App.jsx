@@ -26,8 +26,8 @@ function App() {
 
   return (
     <>
-      <div className="main min-h-screen relative flex justify-center">
-        <div className="min-h-screen w-[60%] relative opacity-100 bg-[#f5f3ff]">
+      <div className="main min-w-full min-h-screen relative flex justify-center px-10 bg-[#dfcba1]">
+        <div className="min-h-screen w-[75%] relative opacity-100 bg-[#f5f3ff]">
   <div
     className="absolute inset-0 z-0 opacity100"
     style={{
@@ -73,7 +73,7 @@ function App() {
       WebkitMaskComposite: "source-in",
     }}
   />
-    <div className="content absolute w-full h-screen">
+    <div className="content absolute h-screen w-full flex justify-center px-5">
        <BrowserRouter>
        <Routes>
         <Route path='/' element={<><Navbar onSearch={setK}/><Notes notes={K?newn:notes} setnotes={setnotes}/></>}/>

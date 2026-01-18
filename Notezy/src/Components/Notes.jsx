@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { IoMdAdd } from "react-icons/io";
 
 const Notes = ({notes,setnotes}) => {
   const navigate=useNavigate();
@@ -20,9 +21,7 @@ const Notes = ({notes,setnotes}) => {
     <div>
       <div className="note h-screen">
         <div className="btn absolute bottom-6 right-6 ">
-            <button onClick={handleAdd} className='border-2 size-15 border-black rounded-4xl flex justify-center items-center bg-[#ca8144]'><svg class="w-10 h-10 text-gray-600 dark:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="22" height="20" fill="none" viewBox="0 0 24 24">
-  <path stroke="currentColor" stroke-linecap="round" strokeLinejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
-</svg></button>
+            <button onClick={handleAdd} className='border-2 size-15 border-black rounded-4xl flex justify-center items-center bg-[#cfad77] hover:bg-[#ca8144] hover:scale-95 hover:transition-transform hover:ease-out'><IoMdAdd size={40}/></button>
         </div>
 
         <div className="note flex flex-wrap h-screen gap-6">
@@ -36,8 +35,8 @@ const Notes = ({notes,setnotes}) => {
                 {notee.content}
               </div>
               <div className="btns absolute space-x-15 bottom-5">
-                <button onClick={()=>handleDelete(notee.id)} className='border-1 font-medium border-black px-3 rounded-xl h-10 bg-[#7a7878] hover:bg-[#d43434] hover:scale-95 hover:transition-transform hover:ease-out'>Delete</button>
-                <button onClick={()=>handleEdit(notee.id)} className='border-1 font-medium px-5 hover:bg-[#5c5252] hover:scale-95 hover:transition-transform hover:ease-out rounded-xl h-10 bg-[#7a7878]'>Edit</button>
+                <button onClick={()=>handleDelete(notee.id)} className='border font-medium border-black px-3 rounded-xl h-10 bg-[#7a7878] hover:bg-[#d43434] hover:scale-95 hover:transition-transform hover:ease-out'>Delete</button>
+                <button onClick={()=>handleEdit(notee.id)} className='border font-medium px-5 hover:bg-[#5c5252] hover:scale-95 hover:transition-transform hover:ease-out rounded-xl h-10 bg-[#7a7878]'>Edit</button>
               </div>
             </div>
           ))}

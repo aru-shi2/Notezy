@@ -26,8 +26,8 @@ const Navbar = ({onSearch}) => {
         <input onChange={(e)=>(
             setKey(e.target.value))} value={Key} className='bg-white rounded-2xl border-2 border-black h-9 self-center px-5' type="text" placeholder='Search Notes...'/>
       {Searching?
-      <button onClick={()=>{setKey(""), onSearch(""), setSearching(false)}} className='font-extrabold w-9 h-9 rounded-3xl border-2 border-black flex justify-center items-center self-center bg-[#f70303]'><RxCross2 size={25} /></button>
-      :<button onClick={Search} className='w-9 h-9 rounded-3xl border-2 border-black flex justify-center items-center self-center bg-[#eeddb9] hover:bg-[#ca8144] hover:scale-95 hover:transition-transform hover:ease-out'>
+      <button onClick={()=>{setKey(""), onSearch(""), setSearching(false)}} className='hover:bg-[#be2020] hover:scale-95 hover:transition-transform hover:ease-out font-extrabold w-9 h-9 rounded-3xl border-2 border-black flex justify-center items-center self-center bg-[#ca8144]'><RxCross2 size={25} /></button>
+      :<button onClick={Search} className='w-9 h-9 rounded-3xl border-2 border-black flex justify-center items-center self-center bg-[#ca8144] hover:scale-95 hover:transition-transform hover:ease-out'>
       <FaSearch />
 </button>}
       </div>

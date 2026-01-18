@@ -1,74 +1,71 @@
 import React, { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Notes from './Notes';
 import {v4 as uuidv4} from "uuid";
 import { useParams } from 'react-router-dom';
+import { MdOutlineDone} from "react-icons/md";
 
-const Note = ({setnotes,notes}) => {
-  const {id}=useParams();
-    const [Title, setTitle] = useState("")
-    const [Content, setContent] = useState("")
+function Note({ setnotes, notes }) {
+  const { id } = useParams();
+  const [Title, setTitle] = useState("");
+  const [Content, setContent] = useState("");
 
-useEffect(() => {
-   if(id){
-      const n=notes.find(i=>i.id===id)
-        setTitle(n.title)
-        setContent(n.content)
-   }
-}, [])
+  useEffect(() => {
+    if (id) {
+      const n = notes.find(i => i.id === id);
+      setTitle(n.title);
+      setContent(n.content);
+    }
+  }, []);
 
-  function getColors(){
-     return `hsl(${Math.random()*360},20%,60%)`;
+  function getColors() {
+    return `hsl(${Math.random() * 360},20%,60%)`;
 
   }
 
- const navigate=useNavigate();
+  const navigate = useNavigate();
 
-    const handleSave=() => {
-      if(!Title && !Content){
-        alert('enter note')
-      }
-      else if(Title || Content && !id){
-        const note={
-        id:uuidv4(),
-        title:Title,
-        content:Content,
-        color:getColors(),
-      };
-      setnotes(prevnotes=>[...prevnotes,note])
-      }
-      else {
-           setnotes(notes.map((t)=>{
-            if(t.id===id){
-              return {...t,title:Title,content:Content}
-            }
-            return t
-           }))
-          }
-      navigate("/");
-
+  const handleSave = () => {
+    if (!Title && !Content) {
+      alert('enter note');
     }
-    
+    else if (Title || Content && !id) {
+      const note = {
+        id: uuidv4(),
+        title: Title,
+        content: Content,
+        color: getColors(),
+      };
+      setnotes(prevnotes => [...prevnotes, note]);
+    }
+    else {
+      setnotes(notes.map((t) => {
+        if (t.id === id) {
+          return { ...t, title: Title, content: Content };
+        }
+        return t;
+      }));
+    }
+    navigate("/");
+
+  };
+
 
   return (
-    <div className=' h-full'>
-
-        <div className="btns flex justify-between">
-            <button onClick={handleSave} className='border-2'>Save</button>
-        </div>
-
-        <div className='w-full flex justify-between mt-3 px-10 align-center border-2 border-b-black rounded-2xl bg-[#db94d1] absolute h-17'></div>
-      <div className="title bg-white w-full mt-3 flex justify-between h-15 align-center border-2 border-black rounded-2xl
-      absolute">
-        <textarea onChange={(e)=>(
-            setTitle(e.target.value))} className='flex items-center font-extrabold rounded-2xl text-2xl w-full h-15' placeholder='Enter Title...' value={Title}></textarea>
+    <div className='h-screen w-full flex flex-col items-center'>
+      <div className="title  bg-[#e4d1b4] mt-10 w-[90%] shadow-[3px_4px_0px_#c7914a,3px_4px_0px_2px_black] border-2 border-black rounded-2xl">
+        <textarea onChange={(e) => (
+          setTitle(e.target.value))} className='focus:outline-none pt-2 flex items-center font-extrabold rounded-2xl text-2xl w-full h-15 px-5 content-center' placeholder='Enter Title...' value={Title}></textarea>
       </div>
-      <div className="content relative top-30 bg-amber-400 border-2 border-black h-[70%]">
-        <textarea onChange={(e)=>(
-            setContent(e.target.value))} value={Content} className='h-full w-full' placeholder='Enter Note...'  name="" id=""></textarea>
+      <div className="shadow-[6px_6px_0px_#c7914a,6px_6px_0px_2px_black] font-medium rounded-4xl px-5 pt-5 text-lg content relative top-10 bg-[#ecd9b4] border-2 border-black h-[73%] w-[90%]">
+        <textarea onChange={(e) => (
+          setContent(e.target.value))} value={Content} className=' focus:outline-none h-full w-full' placeholder='Enter Note...' name="" id=""></textarea>
+      </div>
+      <div className="btn absolute bottom-10 right-15">
+        <button className='w-15 h-15 rounded-4xl border-2 border-black flex justify-center items-center self-center bg-[#c7914a]
+        hover:bg-[#a8580e] hover:scale-95 hover:transition-transform hover:ease-out'><MdOutlineDone size={35}/></button>
       </div>
     </div>
-  )
+  );
 }
 
 export default Note

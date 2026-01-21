@@ -19,7 +19,7 @@ const Notes = ({notes,setnotes}) => {
   
   return (
     <div>
-      <div className="note h-screen pt-40 sm:pt-25">
+      <div className="note h-full pt-40 sm:pt-25">
         <div className="btn absolute bottom-15 sm:bottom-25 right-15 sm:right-25 z-50">
             <button onClick={handleAdd} className='border-2 size-15 border-black rounded-4xl flex justify-center items-center bg-[#cfad77] hover:bg-[#ca8144] hover:scale-95 hover:transition-transform hover:ease-out absolute z-50'><IoMdAdd size={40}/></button>
         </div>

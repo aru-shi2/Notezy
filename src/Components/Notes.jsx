@@ -19,14 +19,14 @@ const Notes = ({notes,setnotes}) => {
   
   return (
     <div>
-      <div className="note h-screen">
+      <div className="note h-screen pt-40 sm:pt-25">
         <div className="btn absolute bottom-15 sm:bottom-25 right-15 sm:right-25 z-50">
             <button onClick={handleAdd} className='border-2 size-15 border-black rounded-4xl flex justify-center items-center bg-[#cfad77] hover:bg-[#ca8144] hover:scale-95 hover:transition-transform hover:ease-out absolute z-50'><IoMdAdd size={40}/></button>
         </div>
 
-        <div className="note flex space-y-5 flex-wrap h-full gap-6 overflow-y-auto no-scrollbar sm:justify-center md:justify-start pr-10 pl-10">
+        <div className="note flex flex-wrap h-full gap-6 overflow-y-auto no-scrollbar sm:justify-center md:justify-start pr-10 pl-10">
           {notes.map((notee)=>(
-            <div style={{backgroundColor:notee.color}} key={notee.id} className="title relative mt-4 top-40 sm:top-25 flex flex-col h-70 pt-5 w-63 rounded-3xl px-5 flex-wrap border-2 border-black hover:shadow-[4px_4px_0_0_rgba(0,0,0,0.08)]">
+            <div style={{backgroundColor:notee.color}} key={notee.id} className="title relative flex flex-col h-70 pt-5 w-63 rounded-3xl px-5 flex-wrap border-2 border-black hover:shadow-[4px_4px_0_0_rgba(0,0,0,0.08)]">
               <div className=" h-[25%] title font-semibold text-2xl whitespace-normal break-all overflow-hidden pb-10">
                 {notee.title}
               </div>
@@ -34,7 +34,7 @@ const Notes = ({notes,setnotes}) => {
               <div className="content whitespace-normal break-all">
                 {notee.content}
               </div>
-              <div className="btns absolute space-x-15 bottom-5">
+              <div className="btns flex absolute space-x-8 sm:space-x-15 bottom-5">
                 <button onClick={()=>handleDelete(notee.id)} className='border font-medium border-black px-3 rounded-xl h-10 bg-[#7a7878] hover:bg-[#d43434] hover:scale-95 hover:transition-transform hover:ease-out'>Delete</button>
                 <button onClick={()=>handleEdit(notee.id)} className='border font-medium px-5 hover:bg-[#5c5252] hover:scale-95 hover:transition-transform hover:ease-out rounded-xl h-10 bg-[#7a7878]'>Edit</button>
               </div>

@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { MdOutlineDone} from "react-icons/md";
 
 function Note({ setnotes, notes }) {
-const { id } = useParams();
+const { id:paramId } = useParams();
 const [Title, setTitle] = useState("");
 const [Content, setContent] = useState("");
 
@@ -27,7 +27,7 @@ const handleSave = () => {
 if (!Title && !Content) {
 alert('enter note');
 }
-else if (Title || Content && !id) {
+else if ((Title || Content )&& !id) {
 const note = {
 id: uuidv4(),
 title: Title,
@@ -36,7 +36,7 @@ color: getColors(),
 };
 setnotes(prevnotes => [...prevnotes, note]);
 }
-else {
+else if(id) {
 setnotes(notes.map((t) => {
 if (t.id === id) {
 return { ...t, title: Title, content: Content };

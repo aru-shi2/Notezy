@@ -26,6 +26,7 @@ const navigate = useNavigate();
 const handleSave = () => {
 if (!Title && !Content) {
 alert('enter note');
+  return;
 }
 else if ((Title || Content )&& !id) {
 const note = {
@@ -37,7 +38,7 @@ color: getColors(),
 setnotes(prevnotes => [...prevnotes, note]);
 }
 else if(id) {
-setnotes(notes.map((t) => {
+setnotes(prevnotes=>prevnotes.map((t) => {
 if (t.id === id) {
 return { ...t, title: Title, content: Content };
 }

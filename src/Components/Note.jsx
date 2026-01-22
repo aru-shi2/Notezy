@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { MdOutlineDone} from "react-icons/md";
 
 function Note({ setnotes, notes }) {
-const { id:paramId } = useParams();
+const { id} = useParams();
 const [Title, setTitle] = useState("");
 const [Content, setContent] = useState("");
 

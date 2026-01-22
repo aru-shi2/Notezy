@@ -18,7 +18,7 @@ const Navbar = ({onSearch}) => {
 
   return (
     <>
-    <div className='flex justify-center'>
+    <div className='flex justify-center '>
       <div className='bg-[#cfad77] sm:w-[90%] w-full h-fit mt-3 flex flex-col items-center sm:items-center gap-5 sm:flex-row sm:justify-between px-2 sm:px-10 sm:h-13 shadow-[3px_4px_0px_#a36c14,3px_4px_0px_2px_black] border-2 border-black rounded-2xl absolute z-50'>
       <div className="logo self-center text-xl sm:text-2xl font-bold">
         Notezy

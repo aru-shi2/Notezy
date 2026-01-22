@@ -25,9 +25,9 @@ const Notes = ({notes,setnotes}) => {
         </div>
         
         <div className="h-screen overflow-y-auto">
-        <div className="pt-40 sm:pt-25 note flex flex-wrap h-screen gap-6 overflow-y-auto sm:justify-center md:justify-start pr-10 pl-10">
+        <div className="pt-40 sm:pt-30 notes flex flex-wrap gap-6 overflow-y-auto sm:justify-center md:justify-start pr-10 pl-10">
           {notes.map((notee)=>(
-            <div style={{backgroundColor:notee.color}} key={notee.id} className="title relative flex flex-col h-70 pt-5 w-63 rounded-3xl px-5 flex-wrap border-2 border-black hover:shadow-[4px_4px_0_0_rgba(0,0,0,0.08)]">
+            <div style={{backgroundColor:notee.color}} key={notee.id} className="title relative flex flex-col min-h-70 pt-5 w-63 rounded-3xl px-5 flex-wrap border-2 border-black hover:shadow-[4px_4px_0_0_rgba(0,0,0,0.08)]">
               <div className=" h-[25%] title font-semibold text-2xl whitespace-normal break-all overflow-hidden pb-10">
                 {notee.title}
               </div>
